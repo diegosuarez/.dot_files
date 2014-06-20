@@ -34,6 +34,8 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set cursorline           " highlight current line                                                                                                                                  
 map <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <F3> :TlistToggle<CR>
+nnoremap gz :!zeal --query "<cword>"&<CR><CR>
+
 if $COLORTERM == 'gnome-terminal'
      set term=gnome-256color
      colorscheme railscasts
