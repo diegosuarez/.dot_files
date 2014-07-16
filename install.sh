@@ -8,4 +8,6 @@ cd ~/.vim/bundle/YouCompleteMe
 
 ln -nfs ~/.dot_files/.vimrc ~/.vimrc
 ln -nfs ~/.dot_files/.bashrc ~/.bashrc 
+ln -nfs ~/.dot_files/.irbrc ~/.irbrc
 . ~/.bashrc
+sudo gem install wirble
