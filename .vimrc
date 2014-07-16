@@ -7,11 +7,11 @@ nmap gx <Plug>NetrwBrowseX
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)map <S-Insert> <MiddleMouse>
 let &cpo=s:cpo_save
 unlet s:cpo_save
+
+"Colores
 set background=dark
 set backspace=indent,eol,start
 set fileencodings=ucs-bom,utf-8,default,latin1
-set guifont=Inconsolata\ Medium\ 12
-color slate
 set helplang=es
 set history=50
 set nomodeline
@@ -22,7 +22,7 @@ set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vi
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
 set window=45
-set nu
+set nu "Numeros de linea.
 set foldcolumn=3         " 2 lines of column for fold showing, always
 set foldmethod=syntax
 set foldlevelstart=99    
@@ -32,7 +32,7 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 "set cursorline           " highlight current line                                                                                                                                  
 map <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <F3> :TlistToggle<CR>
-nnoremap gz :!zeal --query "<cword>"&<CR><CR>
+nnoremap gz :!zeal --query <cword> > /dev/null 2>&1 &<CR><CR>
 
 set t_Co=256 
 colorscheme elflord
@@ -62,7 +62,6 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 set laststatus=2
 set nocompatible
 let g:Powerline_symbols = 'fancy'
-set encoding=utf-8 
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -77,4 +76,5 @@ Bundle "scrooloose/nerdtree"
 Bundle "pangloss/vim-javascript"
 Bundle "marijnh/tern_for_vim"
 Bundle "Lokaltog/vim-powerline"
+Bundle "tpope/vim-fugitive"
 
