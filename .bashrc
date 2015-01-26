@@ -31,7 +31,7 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='\ls --color=auto'
 alias sl='nyancat'
 alias kls='nyancat'
 
@@ -99,3 +99,10 @@ PROMPT_COMMAND=prompt_command
 fmt_time () { #just the way I like it
     date +"%H:%M"|sed 's/ //g'
 }
+
+alias to-do="grep -rn '//TODO' | sed 's%\(^[^:]*:[^:]*\):.*//TODO. \(.*\)%\2 (\1)%'" #VER LOS TODO; por resolver
+#basico:
+alias connected="ping www.google.com"
+LC_ALL="en_US.UTF-8"
+LANGUAGE="en_US.UTF-8"
+alias img=/home/diego/scripts/term_display.sh
