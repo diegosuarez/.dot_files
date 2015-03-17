@@ -54,7 +54,7 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-export JAVA_HOME=/usr/local/java/jdk
+export JAVA_HOME=/opt/jdk
 export EDITOR=vim
 
 
@@ -106,3 +106,4 @@ alias connected="ping www.google.com"
 LC_ALL="en_US.UTF-8"
 LANGUAGE="en_US.UTF-8"
 alias img=/home/diego/scripts/term_display.sh
+alias ip_publica="curl ip.appspot.com"

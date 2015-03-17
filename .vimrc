@@ -29,12 +29,13 @@ set termencoding=utf-8
 set nu "Numeros de linea.
 set foldcolumn=3         " 2 lines of column for fold showing, always
 set foldmethod=syntax
-set foldlevelstart=99    
+set foldlevelstart=99
 set ignorecase  "Busca sin importar mayusculas
 set enc=utf-8            " UTF-8 Default encoding
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab  "indentaciones de cuatro espacios, como manda el FSM.
 set si ci ai
-"set cursorline           " highlight current line                                                                                                                                    
+set hlsearch
+"set cursorline           " highlight current line
 map <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <F3> :TlistToggle<CR>
 
