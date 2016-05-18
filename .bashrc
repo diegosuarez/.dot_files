@@ -57,7 +57,19 @@ fi
 export JAVA_HOME=/opt/jdk
 export EDITOR=vim
 
+fmt_time () { #just the way I like it
+    date +"%H:%M"|sed 's/ //g'
+}
 
+read_only (){
+    if [ -w "$(pwd)" ]; then
+         echo ""
+    else
+         local RED="\033[0;31m"
+         local DEFAULT="\033[0;39m"
+         echo -e "${RED}[RO!!]${DEFAULT}"
+    fi
+}
 # PROMPT
 export GIT_PS1_SHOWDIRTYSTATE=1
 prompt_command () {
@@ -70,7 +82,6 @@ prompt_command () {
     local RED="\[\033[0;31m\]"
     local GREEN="\[\033[0;32m\]"
     local DEFAULT="\[\033[0;39m\]"
-    
     if [ $? -eq 0 ]; then # set an error string for the prompt, if applicable
         ERRPROMPT=""
     else
@@ -80,26 +91,20 @@ prompt_command () {
     if [ "\$(type -t __git_ps1)" ]; then # if we're in a Git repo, show current branch
         BRANCH="\$(__git_ps1 ' (%s)')"
     fi
-    
-    if [ -w "`pwd`" ]; then
+    if [ -w "\$(pwd)" ]; then
         READONLY=""
     else
         READONLY="${RED}[RO!!]${DEFAULT}"
     fi
-    
-    local TIME=`fmt_time` # format time for prompt string
+    TIME="\$(date +"%H:%M"|sed 's/ //g')" # format time for prompt string
     local LOAD=`uptime | awk '{min=NF-2; print $min}'`
     local TITLEBAR='\[\e]2;`pwd`\a'
-    export PS1="${WHITE}[${TIME}] ${GREEN}\u${GRAY}@${GREEN}\
-\h${DKGRAY}${DEFAULT}:${RED}$ERRPROMPT${GRAY}\
-\w${WHITE}${BRANCH}${DEFAULT}${READONLY}$ "
+    export PS1="${WHITE}[${TIME}] ${GREEN}\u${GRAY}@${GREEN}\h${DKGRAY}${DEFAULT}:${RED}$ERRPROMPT${GRAY}\w${WHITE}${BRANCH}${DEFAULT}\$(read_only)$ "
+    # Record each line as it gets issued
+    PROMPT_COMMAND='history -a'
 }
 PROMPT_COMMAND=prompt_command
  
-fmt_time () { #just the way I like it
-    date +"%H:%M"|sed 's/ //g'
-}
-
 alias to-do="grep -rn '//TODO' | sed 's%\(^[^:]*:[^:]*\):.*//TODO. \(.*\)%\2 (\1)%'" #VER LOS TODO; por resolver
 #basico:
 alias connected="ping www.google.com"
@@ -107,3 +112,31 @@ LC_ALL="en_US.UTF-8"
 LANGUAGE="en_US.UTF-8"
 alias img=/home/diego/scripts/term_display.sh
 alias ip_publica="curl ip.appspot.com"
+#Parece que han arreglado esto y se han cargado otra cosa: si lo arrancas con esto, peta al tocar los bordes de la pantalla.
+#alias google-chrome="google-chrome --force-device-scale-factor" #CAGO EN GOOGLE
+
+# h4xx0rr tricks!!
+shopt -s autocd
+shopt -s dirspell
+shopt -s cdspell
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Save multi-line commands as one command
+shopt -s cmdhist
+
+# Record each line as it gets issued
+#PROMPT_COMMAND='history -a'
+
+# Huge history. Doesn't appear to slow things down, so why not?
+HISTSIZE=500000
+HISTFILESIZE=100000
+
+# Avoid duplicate entries
+HISTCONTROL="erasedups:ignoreboth"
+
+# Don't record some commands
+export HISTIGNORE="&:[  ]*:exit:ls:bg:fg:history"
+
+# Useful timestamp format
+HISTTIMEFORMAT='%F %T '

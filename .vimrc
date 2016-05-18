@@ -47,6 +47,8 @@ set t_Co=256
 colorscheme elflord
 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+au BufNewFile,BufRead *.vcl setf vcl
+au BufNewFile,BufRead *.vhost setf vcl
 " Deshabilitamos todas estas porque usamos YouCompleteMe en vez de las tags habituales.
 ""autocmd FileType python set omnifunc=pythoncomplete#Complete
 ""autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -63,6 +65,7 @@ inoremap <Nul> <C-x><C-o>
 noremap <Leader>t :tabe <CR>
 noremap <Leader>x :pclose <CR>
 noremap <Leader>q :wq<CR>
+noremap <Leader>n :let @/ = ""<CR>
 
 "Javascript time! 
 autocmd FileType javascript setlocal omnifunc=tern#Complete
@@ -82,6 +85,7 @@ let g:Powerline_symbols = 'fancy'
 "Emmet 
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 
 " Bundles instalados con Vundle. Instalar con 'vim +BundleInstall'
