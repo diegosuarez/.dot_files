@@ -34,6 +34,7 @@ alias la='ls -A'
 alias l='\ls --color=auto'
 alias sl='nyancat'
 alias kls='nyancat'
+alias tcdn='ssh root@admin-log1'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -140,3 +141,5 @@ export HISTIGNORE="&:[  ]*:exit:ls:bg:fg:history"
 
 # Useful timestamp format
 HISTTIMEFORMAT='%F %T '
+
+export PATH=/opt/ffmpeg/bin:/home/diego/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/diego/.vimpkg/bin
