@@ -1,0 +1,1 @@
+/home/diego/.config/fisherman/theme/theme.util.get.themes.fish

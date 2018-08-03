@@ -1,0 +1,1 @@
+/home/diego/.config/fisherman/debug/completions/debug.fish

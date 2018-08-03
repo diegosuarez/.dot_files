@@ -1,0 +1,1 @@
+/home/diego/.config/fisherman/cprintf/completions/cprintf.fish

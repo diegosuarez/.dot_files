@@ -1,0 +1,1 @@
+/home/diego/.config/fisherman/z/functions/zadd.awk
