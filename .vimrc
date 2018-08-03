@@ -77,7 +77,7 @@ autocmd FileType javascript call tern#Enable()
 autocmd FileType javascript runtime after/ftplugin/javascript_tern.vim
 autocmd FileType html set ft=html.javascript_tern
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType markdown runtime after/ftplugin/markdown/instant-markdown.vim
+" autocmd FileType markdown runtime after/ftplugin/markdown/instant-markdown.vim
 autocmd FileType python setlocal commentstring=#\ %s
 let g:pymode_lint_write = 0
 let g:jedi#use_tabs_not_buffers = 1
@@ -117,7 +117,7 @@ Bundle "pangloss/vim-javascript"
 Bundle "marijnh/tern_for_vim"
 Bundle "Lokaltog/vim-powerline"
 Bundle "tpope/vim-fugitive"
-Bundle "suan/vim-instant-markdown"
+" Bundle "suan/vim-instant-markdown"
 Bundle "jiangmiao/auto-pairs"
 Bundle "flazz/vim-colorschemes"
 Bundle 'ntpeters/vim-better-whitespace'

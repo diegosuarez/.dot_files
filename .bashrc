@@ -35,6 +35,7 @@ alias l='\ls --color=auto'
 alias sl='nyancat'
 alias kls='nyancat'
 alias tcdn='ssh root@admin-log1'
+alias eltiempo="curl wttr.in/"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -112,7 +113,7 @@ alias connected="ping www.google.com"
 LC_ALL="en_US.UTF-8"
 LANGUAGE="en_US.UTF-8"
 alias img=/home/diego/scripts/term_display.sh
-alias ip_publica="curl ip.appspot.com"
+alias ip_publica="curl https://api.ipify.org;echo"
 #Parece que han arreglado esto y se han cargado otra cosa: si lo arrancas con esto, peta al tocar los bordes de la pantalla.
 #alias google-chrome="google-chrome --force-device-scale-factor" #CAGO EN GOOGLE
 
