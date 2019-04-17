@@ -12,7 +12,6 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 let mapleader=","
 
-
 "Colores
 set background=dark
 set backspace=indent,eol,start
@@ -20,7 +19,7 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=es
 set history=70
 set nomodeline
-set mouse= "aprender a usar el modo visual para deshacerse de esta linea.
+"set mouse= "aprender a usar el modo visual para deshacerse de esta linea.
 set printoptions=paper:letter
 set ruler
 set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
@@ -35,9 +34,10 @@ set enc=utf-8            " UTF-8 Default encoding
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab  "indentaciones de cuatro espacios, como manda el FSM.
 set si ci ai
 set hlsearch
+set path+=**
+set wildmenu
 "set cursorline           " highlight current line
 map <F2> :NERDTreeTabsToggle<CR>
-nnoremap <silent> <F3> :TlistToggle<CR>
 
 " Zeal para docu offline.
 nnoremap <leader>z :!zeal --query <cword> > /dev/null 2>&1 &<CR><CR>
@@ -46,20 +46,12 @@ nnoremap <leader>z :!zeal --query <cword> > /dev/null 2>&1 &<CR><CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-"Coloritos chulos.
-set t_Co=256 
-colorscheme elflord
 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-au BufNewFile,BufRead *.vcl setf vcl
-au BufNewFile,BufRead *.vhost setf vcl
+au BufNewFile,BufRead *.vhost set filetype=vcl
+au BufNewFile,BufRead *.vcl set filetype=vcl
+
 " Deshabilitamos todas estas porque usamos YouCompleteMe en vez de las tags habituales.
-""autocmd FileType python set omnifunc=pythoncomplete#Complete
-""autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-""autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-""autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd BufRead,BufNewFile *.twig set filetype=htmljinja
 
@@ -70,16 +62,12 @@ noremap <Leader>t :tabe <CR>
 noremap <Leader>x :pclose <CR>
 noremap <Leader>q :wq<CR>
 noremap <Leader>n :let @/ = ""<CR>
+noremap <Leader>y "+y<CR>
 
 "Javascript time! 
-autocmd FileType javascript setlocal omnifunc=tern#Complete
-autocmd FileType javascript call tern#Enable()
-autocmd FileType javascript runtime after/ftplugin/javascript_tern.vim
-autocmd FileType html set ft=html.javascript_tern
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType markdown runtime after/ftplugin/markdown/instant-markdown.vim
 autocmd FileType python setlocal commentstring=#\ %s
-let g:pymode_lint_write = 0
+" let g:pymode_lint_write = 0
 let g:jedi#use_tabs_not_buffers = 1
 let g:ackprg = 'ag --vimgrep'
 
@@ -102,24 +90,35 @@ while c <= 'z'
   let c = nr2char(1+char2nr(c))
 endw
 
-" Bundles instalados con Vundle. Instalar con 'vim +BundleInstall'
+" Workspace
+noremap <Tab> :WSNext<CR>
+noremap <S-Tab> :WSPrev<CR>
+noremap <Leader><Tab> :WSClose<CR>
+noremap <Leader><S-Tab> :WSClose!<CR>
+noremap <C-t> :tabe<CR>
 
-" let Vundle manage Vundle
-" required! 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'mattn/emmet-vim'
-Bundle "scrooloose/nerdtree"
-Bundle "pangloss/vim-javascript"
-Bundle "marijnh/tern_for_vim"
-Bundle "Lokaltog/vim-powerline"
-Bundle "tpope/vim-fugitive"
-" Bundle "suan/vim-instant-markdown"
-Bundle "jiangmiao/auto-pairs"
-Bundle "flazz/vim-colorschemes"
-Bundle 'ntpeters/vim-better-whitespace'
+cabbrev bonly WSBufOnly
+let g:workspace_powerline_separators = 1
+let g:workspace_tab_icon = "\uf00a"
+let g:workspace_left_trunc_icon = "\uf0a8"
+let g:workspace_right_trunc_icon = "\uf0a9"
+
+let g:UltiSnipsExpandTrigger="<C-s>"
+
+" Para apt-vim
 execute pathogen#infect()
 call pathogen#helptags()
+"
+"Coloritos chulos.
+"
+set t_Co=256
+colorscheme elflord
+
+let g:ycm_min_num_of_chars_for_completion = 10
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:jedi#auto_initialization = 0
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc']
+
+
+"au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile> | endif | endif

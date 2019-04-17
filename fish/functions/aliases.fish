@@ -9,3 +9,25 @@ end
 function ls --wraps ls --description 'alias ls=ls -larth'
     command ls -larth --color=auto $argv
 end
+
+function vpn --description 'alias vpn=cd /home/diego/transparent/vpn && openvpn transparent.ovpn'
+    cd /home/diego/transparent/vpn
+    sudo openvpn transparent.ovpn
+end
+
+function upgrade --description 'alias upgrade=sudo apt update; and sudo apt upgrade'
+    sudo apt update; and sudo apt -y upgrade
+end
+
+function api_manage --description 'alias api_manage="DJANGO_SETTINGS_MODULE='config.settings.local' python manage.py"'
+    set -x DJANGO_SETTINGS_MODULE 'config.settings.local' 
+    python manage.py $argv
+end
+
+function clean_html --description 'alias clean_html=tidy -w 0 -q -i -f /dev/null --indent-spaces 4'
+    tidy -w 0 -q -i -f /dev/null --indent-spaces 4;
+end
+
+function sl --description "alias sl=nyancat # aprende a escribir"
+    nyancat
+end
