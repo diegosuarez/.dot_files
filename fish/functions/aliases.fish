@@ -15,13 +15,18 @@ function vpn --description 'alias vpn=cd /home/diego/transparent/vpn && openvpn 
     sudo openvpn transparent.ovpn
 end
 
+function mobusivpn --description 'alias mobusivpn=cd /home/diego/servotic/mobusi/vpn && openvpn mobusi.ovpn'
+    cd /home/diego/servotic/mobusi/vpn
+    sudo openvpn mobusi.ovpn
+end
+
 function upgrade --description 'alias upgrade=sudo apt update; and sudo apt upgrade'
     sudo apt update; and sudo apt -y upgrade
 end
 
-function api_manage --description 'alias api_manage="DJANGO_SETTINGS_MODULE='config.settings.local' python manage.py"'
+function api_manage --description 'alias api_manage="DJANGO_SETTINGS_MODULE='config.settings.local' python3 manage.py"'
     set -x DJANGO_SETTINGS_MODULE 'config.settings.local' 
-    python manage.py $argv
+    python3 manage.py $argv
 end
 
 function clean_html --description 'alias clean_html=tidy -w 0 -q -i -f /dev/null --indent-spaces 4'

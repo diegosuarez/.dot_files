@@ -7,6 +7,7 @@ map! <S-Insert> <MiddleMouse>
 " What?!
 map <M-,> <ESC>
 nmap gx <Plug>NetrwBrowseX
+
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -22,7 +23,7 @@ set nomodeline
 "set mouse= "aprender a usar el modo visual para deshacerse de esta linea.
 set printoptions=paper:letter
 set ruler
-set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
+set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
 set nu "Numeros de linea.
@@ -105,10 +106,9 @@ let g:workspace_right_trunc_icon = "\uf0a9"
 
 let g:UltiSnipsExpandTrigger="<C-s>"
 
-" Para apt-vim
-execute pathogen#infect()
-call pathogen#helptags()
-"
+vnoremap J :m '>+1gv<cr>gv
+vnoremap K :m '<-2gv<cr>gv
+
 "Coloritos chulos.
 "
 set t_Co=256
@@ -117,8 +117,13 @@ colorscheme elflord
 let g:ycm_min_num_of_chars_for_completion = 10
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:jedi#auto_initialization = 0
+let g:jedi#auto_initialization = 1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc']
+
+" Para apt-vim
+execute pathogen#infect()
+call pathogen#helptags()
+"
 
 
 "au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile> | endif | endif
