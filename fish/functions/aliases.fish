@@ -2,6 +2,11 @@ function tcdn --description 'alias tcdn="ssh root@admin-log1"'
     ssh root@172.20.0.1 $argv
 end
 
+function servotic --description 'alias servotic="ssh -i ~/.ssh/id_rsa_personal root@10.58.157.10"'
+    ssh -i ~/.ssh/id_rsa_personal root@10.58.157.10 $argv
+end
+
+
 function ip_publica --description 'alias ip_publica="curl https://api.ipify.org;echo"'
     curl https://api.ipify.org;echo
 end
@@ -15,7 +20,7 @@ function vpn --description 'alias vpn=cd /home/diego/transparent/vpn && openvpn 
     sudo openvpn transparent.ovpn
 end
 
-function mobusivpn --description 'alias mobusivpn=cd /home/diego/servotic/mobusi/vpn && openvpn mobusi.ovpn'
+function servovpn --description 'alias servovpn=cd /home/diego/servotic/mobusi/vpn && openvpn mobusi.ovpn'
     cd /home/diego/servotic/mobusi/vpn
     sudo openvpn mobusi.ovpn
 end
