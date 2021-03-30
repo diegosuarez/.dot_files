@@ -14,6 +14,7 @@ unlet s:cpo_save
 let mapleader=","
 
 "Colores
+syntax on
 set background=dark
 set backspace=indent,eol,start
 set fileencodings=ucs-bom,utf-8,default,latin1
@@ -23,7 +24,7 @@ set nomodeline
 "set mouse= "aprender a usar el modo visual para deshacerse de esta linea.
 set printoptions=paper:letter
 set ruler
-set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
+set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
 set nu "Numeros de linea.
@@ -39,6 +40,8 @@ set path+=**
 set wildmenu
 "set cursorline           " highlight current line
 map <F2> :NERDTreeTabsToggle<CR>
+
+let g:rainbow_active = 1
 
 " Zeal para docu offline.
 nnoremap <leader>z :!zeal --query <cword> > /dev/null 2>&1 &<CR><CR>

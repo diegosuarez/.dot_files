@@ -144,3 +144,7 @@ export HISTIGNORE="&:[  ]*:exit:ls:bg:fg:history"
 HISTTIMEFORMAT='%F %T '
 
 export PATH=/opt/ffmpeg/bin:/home/diego/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/diego/.vimpkg/bin
+
+export PATH="/opt/ffmpeg/bin:/home/diego/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/diego/.vimpkg/bin:/home/dsuarez/.vimpkg/bin"
+
+export PATH="/DATA/plataforma/leroymerlin/bin:/home/diego/.yarn/bin:/DATA/plataforma/leroymerlin/bin:/usr/local/bin:/usr/bin:/bin:/usr/games:/usr/sbin:/opt/node/bin:/usr/sbin:/opt/node/bin:/home/dsuarez/.vimpkg/bin"
