@@ -12,6 +12,7 @@ nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),
 let &cpo=s:cpo_save
 unlet s:cpo_save
 let mapleader=","
+set nocp
 
 "Colores
 set background=dark
@@ -20,10 +21,20 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=es
 set history=70
 set nomodeline
-"set mouse= "aprender a usar el modo visual para deshacerse de esta linea.
+" highlight non ascii characters
+augroup NonAsciiCharsHi
+    autocmd!
+    highlight nonascii guibg=Red ctermbg=2
+    match nonascii "[^\x00-\x7F]"
+    syntax match nonascii "[^\x00-\x7F]"
+    autocmd BufWinEnter * match nonascii "[^\x00-\x7F]"
+    autocmd InsertLeave * match nonascii "[^\x00-\x7F]"
+    autocmd BufWinLeave * call clearmatches()
+augroup END
+set mouse=a 
 set printoptions=paper:letter
 set ruler
-set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
+set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
 set nu "Numeros de linea.
@@ -31,14 +42,17 @@ set foldcolumn=3         " 2 lines of column for fold showing, always
 set foldmethod=syntax
 set foldlevelstart=99
 set ignorecase  "Busca sin importar mayusculas
+set smartcase "si hay mayusculas, case sensitive
 set enc=utf-8            " UTF-8 Default encoding
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab  "indentaciones de cuatro espacios, como manda el FSM.
 set si ci ai
 set hlsearch
+set incsearch
 set path+=**
 set wildmenu
 "set cursorline           " highlight current line
 map <F2> :NERDTreeTabsToggle<CR>
+map <F4> :NERDTreeFind<CR>
 
 " Zeal para docu offline.
 nnoremap <leader>z :!zeal --query <cword> > /dev/null 2>&1 &<CR><CR>
@@ -48,6 +62,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 
+filetype plugin indent on
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 au BufNewFile,BufRead *.vhost set filetype=vcl
 au BufNewFile,BufRead *.vcl set filetype=vcl
@@ -64,6 +79,8 @@ noremap <Leader>x :pclose <CR>
 noremap <Leader>q :wq<CR>
 noremap <Leader>n :let @/ = ""<CR>
 noremap <Leader>y "+y<CR>
+noremap <Leader>p "+gP<CR>
+noremap <Leader>s :bel term ++rows=12 ++close fish <CR>
 
 "Javascript time! 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -97,6 +114,7 @@ noremap <S-Tab> :WSPrev<CR>
 noremap <Leader><Tab> :WSClose<CR>
 noremap <Leader><S-Tab> :WSClose!<CR>
 noremap <C-t> :tabe<CR>
+nnoremap <C-L> :set hls!<CR><C-L>
 
 cabbrev bonly WSBufOnly
 let g:workspace_powerline_separators = 1
@@ -109,11 +127,6 @@ let g:UltiSnipsExpandTrigger="<C-s>"
 vnoremap J :m '>+1gv<cr>gv
 vnoremap K :m '<-2gv<cr>gv
 
-"Coloritos chulos.
-"
-set t_Co=256
-colorscheme elflord
-
 let g:ycm_min_num_of_chars_for_completion = 10
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -125,5 +138,8 @@ execute pathogen#infect()
 call pathogen#helptags()
 "
 
+"Coloritos chulos.
+"
+set t_Co=256
+colorscheme tender
 
-"au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile> | endif | endif
