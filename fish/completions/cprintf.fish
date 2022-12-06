@@ -1,1 +1,1 @@
-/home/diego/.config/fisherman/cprintf/completions/cprintf.fish
+complete -c cprintf -d "Printf with colors"

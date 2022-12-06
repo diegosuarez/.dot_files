@@ -5,9 +5,9 @@ SETUVAR --export TCDNAPI_CLIENT:12345678
 SETUVAR --export TCDNAPI_SECRET:abcdefghi
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
-SETUVAR Z_DATA:/home/diego/\x2elocal/share/z/data
-SETUVAR Z_DATA_DIR:/home/diego/\x2elocal/share/z
-SETUVAR Z_EXCLUDE:/home/diego
+SETUVAR Z_DATA:/home/dsuarez/\x2elocal/share/z/data
+SETUVAR Z_DATA_DIR:/home/dsuarez/\x2elocal/share/z
+SETUVAR Z_EXCLUDE:\x5e/home/dsuarez\x24
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_initialized:3100

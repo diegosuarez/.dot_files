@@ -1,1 +1,3 @@
-/home/diego/.config/fisherman/theme/theme.util.get.themes.fish
+function theme.util.get.themes
+  printf "%s\n" $fish_path/themes/*
+end

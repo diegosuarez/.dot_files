@@ -15,6 +15,7 @@ let mapleader=","
 set nocp
 
 "Colores
+syntax on
 set background=dark
 set backspace=indent,eol,start
 set fileencodings=ucs-bom,utf-8,default,latin1
@@ -55,6 +56,8 @@ set pastetoggle=<F10>
 map <F2> :NERDTreeTabsToggle<CR>
 map <F4> :NERDTreeFind<CR>
 nmap <leader><CR> i<CR><Esc> k$a
+
+let g:rainbow_active = 1
 
 " Zeal para docu offline.
 nnoremap <leader>z :!zeal --query <cword> > /dev/null 2>&1 &<CR><CR>

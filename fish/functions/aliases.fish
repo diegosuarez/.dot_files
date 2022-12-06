@@ -15,10 +15,10 @@ function ls --wraps ls --description 'alias ls=ls -larth'
     command ls -larth --color=auto $argv
 end
 
-function vpn --description 'alias vpn=cd /home/diego/transparent/vpn && openvpn transparent.ovpn'
-    cd /home/diego/transparent/vpn
-    sudo openvpn transparent.ovpn
-end
+#function vpn --description 'alias vpn=cd /home/diego/transparent/vpn && openvpn transparent.ovpn'
+#    cd /home/diego/transparent/vpn
+#    sudo openvpn transparent.ovpn
+#end
 
 function servovpn --description 'alias servovpn=cd /home/diego/servotic/mobusi/vpn && openvpn mobusi.ovpn'
     cd /home/diego/servotic/mobusi/vpn
@@ -40,4 +40,8 @@ end
 
 function sl --description "alias sl=nyancat # aprende a escribir"
     nyancat
+end
+
+function load 
+  bass (cat /tmp/server_map | awk 'NR>1{print "export " $0}' )
 end
