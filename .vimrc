@@ -50,9 +50,11 @@ set hlsearch
 set incsearch
 set path+=**
 set wildmenu
+set pastetoggle=<F10>
 "set cursorline           " highlight current line
 map <F2> :NERDTreeTabsToggle<CR>
 map <F4> :NERDTreeFind<CR>
+nmap <leader><CR> i<CR><Esc> k$a
 
 " Zeal para docu offline.
 nnoremap <leader>z :!zeal --query <cword> > /dev/null 2>&1 &<CR><CR>
