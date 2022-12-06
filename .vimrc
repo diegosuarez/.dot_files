@@ -1,4 +1,4 @@
-version 7.0
+" version 7.0
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
@@ -35,7 +35,7 @@ augroup END
 set mouse=a 
 set printoptions=paper:letter
 set ruler
-set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
+" set runtimepath=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim90,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
 set nu "Numeros de linea.
@@ -106,12 +106,12 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
-let c='a'
-while c <= 'z'
-  exec "set <M-".toupper(c).">=\e".c
-  exec "imap \e".c." <M-".toupper(c).">"
-  let c = nr2char(1+char2nr(c))
-endw
+"let c='a'
+"while c <= 'z'
+"  exec "set <M-".toupper(c).">=\e".c
+"  exec "imap \e".c." <M-".toupper(c).">"
+"  let c = nr2char(1+char2nr(c))
+"endw
 
 " Workspace
 noremap <Tab> :WSNext<CR>
@@ -138,13 +138,19 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:jedi#auto_initialization = 1
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc']
 
-" Para apt-vim
-execute pathogen#infect()
-call pathogen#helptags()
-"
+" Gestion de plugins con VimPlug
+call plug#begin()
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'jacoborus/tender.vim'
+call plug#end()
 
 "Coloritos chulos.
 "
 set t_Co=256
 colorscheme tender
 
+"au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile> | endif | endif
