@@ -1,5 +1,5 @@
-function tcdn --description 'alias tcdn="ssh dsuarez@admin-eemgcp1"'
-    ssh -t dsuarez@admin-eemgcp1 fish $argv
+function tcdn --description 'alias tcdn="ssh root@admin-log1"'
+    ssh root@172.20.0.1 $argv
 end
 
 function servotic --description 'alias servotic="ssh -i ~/.ssh/id_rsa_personal root@10.58.157.10"'
