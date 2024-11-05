@@ -146,6 +146,7 @@ Plug 'junegunn/fzf'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'jacoborus/tender.vim'
+ 
 call plug#end()
 
 "Coloritos chulos.
@@ -154,3 +155,5 @@ set t_Co=256
 colorscheme tender
 
 "au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile> | endif | endif
+execute pathogen#infect()
+call pathogen#helptags()

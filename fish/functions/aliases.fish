@@ -1,5 +1,5 @@
 function tcdn --description 'alias tcdn="ssh root@admin-log1"'
-    ssh root@172.20.0.1 $argv
+    ssh dsuarez@172.20.0.2 $argv
 end
 
 function servotic --description 'alias servotic="ssh -i ~/.ssh/id_rsa_personal root@10.58.157.10"'
@@ -40,6 +40,10 @@ end
 
 function sl --description "alias sl=nyancat # aprende a escribir"
     nyancat
+end
+
+function bat --description "alias bat=batcat"
+  batcat $argv
 end
 
 function load 
